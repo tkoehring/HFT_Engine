@@ -6,6 +6,10 @@ file(GLOB TEST_SOURCES CONFIGURE_DEPENDS
 
 add_executable(matching_tests ${TEST_SOURCES})
 
+target_sources(matching_tests PRIVATE
+    test_traits.cpp
+)
+
 find_package(GTest CONFIG REQUIRED)
 
 target_link_libraries(matching_tests

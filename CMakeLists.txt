@@ -19,17 +19,13 @@ include(cmake/sanitizers.cmake)
 
 # ---- Library: matching ----
 
-add_library(matching STATIC)
-
-target_sources(matching
-    PRIVATE
-        src/order_book.cpp
-        
- "include/matching/order.h" "include/matching/order_type.h")
+add_library(matching STATIC
+    src/order_book.cpp
+ "include/matching/config.h" "include/matching/types.h")
 
 target_include_directories(matching
     PUBLIC
-        ${PROJECT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 if(ENABLE_WARNINGS)

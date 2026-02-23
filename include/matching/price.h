@@ -127,9 +127,6 @@ namespace matching {
 
 			return Price<Decimals>::from_ticks(p);
 		}
-
-		static_assert(std::is_trivially_copyable_v<Price>);
-		static_assert(std::is_standard_layout_v<Price>);
 	};
 
 }

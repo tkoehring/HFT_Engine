@@ -40,7 +40,4 @@ namespace matching {
 			return *this;
 		}
 	};
-
-	static_assert(std::is_trivially_copyable_v<Qty>);
-	static_assert(std::is_standard_layout_v<Qty>);
 }

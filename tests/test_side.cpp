@@ -5,23 +5,23 @@ namespace {
 
     using matching::Side;
 
-    TEST(SideBasic, OppositeWorks) {
+    TEST(Side, OppositeWorks) {
         EXPECT_EQ(matching::opposite(Side::Buy), Side::Sell);
         EXPECT_EQ(matching::opposite(Side::Sell), Side::Buy);
     }
 
-    TEST(SideConversion, ToChar) {
+    TEST(Side, ToChar) {
         EXPECT_EQ(matching::to_char(Side::Buy), 'B');
         EXPECT_EQ(matching::to_char(Side::Sell), 'S');
     }
 
-    TEST(SideConversion, FromCharValid) {
+    TEST(Side, FromCharValid) {
         auto s = matching::from_char('B');
         ASSERT_TRUE(s.has_value());
         EXPECT_EQ(*s, Side::Buy);
     }
 
-    TEST(SideConversion, FromCharInvalid) {
+    TEST(Side, FromCharInvalid) {
         EXPECT_FALSE(matching::from_char('X').has_value());
     }
 }

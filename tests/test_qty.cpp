@@ -5,12 +5,12 @@ namespace {
 
     using matching::Qty;
 
-    TEST(QtyBasic, Construction) {
+    TEST(Qty, FromUnitsFactory) {
         auto q = Qty::from_units(100);
         EXPECT_EQ(q.units(), 100);
     }
 
-    TEST(QtyArithmetic, Addition) {
+    TEST(Qty, Addition) {
         auto a = Qty::from_units(50);
         auto b = Qty::from_units(25);
 
@@ -18,7 +18,7 @@ namespace {
         EXPECT_EQ(c.units(), 75);
     }
 
-    TEST(QtyArithmetic, Subtraction) {
+    TEST(Qty, Subtraction) {
         auto a = Qty::from_units(50);
         auto b = Qty::from_units(25);
 
@@ -26,7 +26,7 @@ namespace {
         EXPECT_EQ(c.units(), 25);
     }
 
-    TEST(QtyComparison, OrderingWorks) {
+    TEST(Qty, OrderingWorks) {
         auto a = Qty::from_units(10);
         auto b = Qty::from_units(20);
 

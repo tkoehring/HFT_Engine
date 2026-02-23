@@ -8,12 +8,12 @@ namespace matching
 	enum class Side : uint8_t { Buy = 0, Sell = 1 };
 
 	constexpr Side opposite(Side s) noexcept {
-		assert(s == Side::Buy || s == Side::Sell && "Side::opposite param must be Buy or Sell");
+		assert((s == Side::Buy || s == Side::Sell) && "Side::opposite param must be Buy or Sell");
 		return s == Side::Buy ? Side::Sell : Side::Buy;
 	}
 
 	constexpr char to_char(Side s) noexcept {
-		assert(s == Side::Buy || s == Side::Sell && "Side::to_char param must be Buy or Sell");
+		assert((s == Side::Buy || s == Side::Sell) && "Side::to_char param must be Buy or Sell");
 		return s == Side::Buy ? 'B' : 'S';
 	}
 

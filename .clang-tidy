@@ -1,0 +1,11 @@
+Checks: >
+  bugprone-*,
+  performance-*,
+  modernize-*,
+  readability-*,
+  -readability-identifier-naming,
+  -modernize-use-trailing-return-type
+
+HeaderFilterRegex: '^(.*[\\/])?(include|src|tests)[\\/]'
+SystemHeaders: false
+FormatStyle: none

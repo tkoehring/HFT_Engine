@@ -1,0 +1,53 @@
+# Base style & language standard
+BasedOnStyle: LLVM
+Standard: c++20
+
+# Indentation & tabs
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+AccessModifierOffset: -4
+
+# Line length & wrapping
+ColumnLimit: 110
+
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: InlineOnly
+
+# Braces
+BreakBeforeBraces: Attach
+BraceWrapping:
+  AfterNamespace: false
+  AfterClass: false
+  AfterStruct: false
+  AfterFunction: false
+  AfterControlStatement: Never
+
+# Pointers & references
+PointerAlignment: Left
+DerivePointerAlignment: false
+
+# Spacing
+SpaceBeforeParens: ControlStatements
+
+# Includes
+SortIncludes: true
+IncludeBlocks: Regroup
+
+# Templates
+AlwaysBreakTemplateDeclarations: Yes
+
+# Function & macro calls (e.g. GoogleTest instantiations)
+BinPackArguments: false
+BinPackParameters: false
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# Braced init-lists / aggregates
+Cpp11BracedListStyle: true
+
+# Macro regions (e.g. INSTANTIATE_TEST_SUITE_P)
+MacroBlockBegin: ""
+MacroBlockEnd: ""

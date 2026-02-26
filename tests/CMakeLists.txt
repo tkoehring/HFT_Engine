@@ -8,6 +8,7 @@ add_executable(matching_tests ${TEST_SOURCES})
 
 target_sources(matching_tests PRIVATE
     test_traits.cpp
+    $<$<CONFIG:Debug>:test_order_debug.cpp>
 )
 
 find_package(GTest CONFIG REQUIRED)

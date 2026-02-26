@@ -1,7 +1,5 @@
 #pragma once
 
 namespace matching {
-	struct OrderBook {
-
-	};
-}
+struct OrderBook {};
+} // namespace matching

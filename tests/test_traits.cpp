@@ -1,10 +1,9 @@
-#include <type_traits>
-
+#include <matching/order.h>
+#include <matching/order_id.h>
 #include <matching/price.h>
 #include <matching/qty.h>
-#include <matching/order_id.h>
-#include <matching/order.h>
 #include <matching/side.h>
+#include <type_traits>
 
 // ABI/layout contracts (compile-time)
 static_assert(std::is_trivially_copyable_v<matching::Qty>);

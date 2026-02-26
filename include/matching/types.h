@@ -4,5 +4,5 @@
 #include <matching/price.h>
 
 namespace matching {
-	using PriceT = Price<kPriceDecimals>;
+using PriceT = Price<kPriceDecimals>;
 }

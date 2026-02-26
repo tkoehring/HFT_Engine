@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-
 #include <matching/order_id.h>
 
 TEST(OrderId, FromUint64Factory) {

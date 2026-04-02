@@ -4,6 +4,7 @@
 #include <optional>
 
 namespace matching {
+
 enum class Side : uint8_t { Buy = 0, Sell = 1 };
 
 constexpr Side opposite(Side s) noexcept {
@@ -25,4 +26,5 @@ constexpr std::optional<Side> from_char(char c) noexcept {
         return Side::Sell;
     return std::nullopt;
 }
+
 } // namespace matching

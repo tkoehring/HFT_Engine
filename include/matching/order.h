@@ -10,15 +10,16 @@
 #include <type_traits>
 
 namespace matching {
+
 struct Order {
-    OrderId id_;
-    PriceT price_;
-    Qty quantity_;
-    OrderType type_;
-    Side side_;
+    OrderId id;
+    PriceT price;
+    Qty quantity;
+    OrderType type;
+    Side side;
 
     constexpr Order(OrderId id, OrderType type, PriceT price, Qty quantity, Side side) noexcept
-        : id_(id), type_(type), price_(price), quantity_(quantity), side_(side) {
+        : id(id), type(type), price(price), quantity(quantity), side(side) {
         assert(quantity.units() > 0 && "Order quantity must be positive");
         assert(price.ticks() > 0 && "Order price must be positive");
     }
@@ -26,10 +27,11 @@ struct Order {
     friend constexpr auto operator<=>(const Order&, const Order&) noexcept = default;
 
     constexpr void reduce(Qty filled) noexcept {
-        assert(filled.units() <= quantity_.units() && "Filled quantity cannot exceed order quantity");
-        quantity_ -= filled;
+        assert(filled.units() <= quantity.units() && "Filled quantity cannot exceed order quantity");
+        quantity -= filled;
     }
 
-    constexpr bool is_filled() const noexcept { return quantity_.units() == 0; }
+    constexpr bool is_filled() const noexcept { return quantity.units() == 0; }
 };
+
 } // namespace matching

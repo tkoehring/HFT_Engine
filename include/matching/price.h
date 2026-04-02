@@ -15,6 +15,7 @@
 // Gives a Price object with 4 decimals, i.e. 1.2345 will be represented as 12345 in ticks_
 
 namespace matching {
+
 template <int Decimals>
 struct Price {
     static_assert(Decimals >= 0 && Decimals <= 9, "Price<Decimals>: Decimals must be between 0 and 9");

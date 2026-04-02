@@ -7,6 +7,7 @@
 #include <type_traits>
 
 namespace matching {
+
 struct Qty {
 private:
     uint64_t units_;
@@ -40,4 +41,5 @@ public:
         return *this;
     }
 };
+
 } // namespace matching

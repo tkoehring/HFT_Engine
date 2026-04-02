@@ -2,8 +2,10 @@
 
 #include <compare>
 #include <cstdint>
+#include <functional>
 
 namespace matching {
+
 struct OrderId {
 private:
     uint64_t id_;
@@ -15,3 +17,13 @@ public:
     friend constexpr auto operator<=>(const OrderId&, const OrderId&) noexcept = default;
 };
 } // namespace matching
+
+namespace std {
+template <>
+struct hash<matching::OrderId> {
+    size_t operator()(const matching::OrderId& order_id) const noexcept {
+        return hash<uint64_t>{}(order_id.id());
+    }
+};
+
+} // namespace std

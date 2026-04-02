@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
-#include <matching/qty.h>
+#include "test_common.h"
 
 namespace {
 
-using matching::Qty;
+using namespace test;
 
 TEST(Qty, FromUnitsFactory) {
     auto q = Qty::from_units(100);
@@ -34,4 +34,5 @@ TEST(Qty, OrderingWorks) {
     EXPECT_GT(b, a);
     EXPECT_EQ(a, a);
 }
-} // namespace
+
+}

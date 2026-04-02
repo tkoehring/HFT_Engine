@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
-#include <matching/side.h>
+#include "test_common.h"
 
 namespace {
 
-using matching::Side;
+using namespace test;
 
 TEST(Side, OppositeWorks) {
     EXPECT_EQ(matching::opposite(Side::Buy), Side::Sell);
@@ -24,4 +24,5 @@ TEST(Side, FromCharValid) {
 TEST(Side, FromCharInvalid) {
     EXPECT_FALSE(matching::from_char('X').has_value());
 }
-} // namespace
+
+}

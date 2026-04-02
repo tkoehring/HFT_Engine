@@ -1,7 +1,9 @@
 #include <gtest/gtest.h>
-#include <matching/order.h>
+#include "test_common.h"
 
-using Price4 = matching::Price<4>;
+namespace {
+
+using namespace test;
 
 TEST(OrderDeathTest, ReduceCannotOverfill) {
     ::testing::FLAGS_gtest_death_test_style = "threadsafe";
@@ -13,4 +15,6 @@ TEST(OrderDeathTest, ReduceCannotOverfill) {
                       matching::Side::Buy};
 
     EXPECT_DEATH(o.reduce(matching::Qty::from_units(6)), ".*");
+}
+
 }

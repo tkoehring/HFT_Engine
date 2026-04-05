@@ -36,6 +36,23 @@ SpaceBeforeParens: ControlStatements
 SortIncludes: true
 IncludeBlocks: Regroup
 
+IncludeCategories:
+  # C++ standard library headers
+  - Regex: '^<([a-zA-Z0-9_]+)>$'
+    Priority: 1
+
+  # Third-party headers
+  - Regex: '^<.*>$'
+    Priority: 2
+
+  # Match Library headers
+  - Regex: '^"matching/.*"'
+    Priority: 3
+
+  # Quoted headers
+  - Regex: '^".*"'
+    Priority: 4
+
 # Templates
 AlwaysBreakTemplateDeclarations: Yes
 

@@ -68,6 +68,23 @@
         "CMAKE_BUILD_TYPE": "RelWithDebInfo"
       }
     },
+    {
+      "name": "linux-clang-base",
+      "hidden": true,
+      "inherits": "linux-base",
+      "environment": {
+        "VCPKG_ROOT": "/opt/vcpkg",
+        "CC": "clang",
+        "CXX": "clang++"
+      }
+    },
+    {
+      "name": "sanitizers-base",
+      "hidden": true,
+      "cacheVariables": {
+        "ENABLE_SANITIZERS": "ON"
+      }
+    },
 
     {
       "name": "x64-debug",
@@ -99,6 +116,21 @@
       "name": "linux-relwithdebinfo",
       "displayName": "Linux RelWithDebInfo",
       "inherits": [ "linux-base", "relwithdebinfo-base" ]
+    },
+    {
+      "name": "linux-asan-ubsan",
+      "displayName": "Linux ASan UBSan",
+      "inherits": [ "linux-base", "debug-base", "sanitizers-base" ]
+    },
+    {
+      "name": "linux-clang-debug",
+      "displayName": "Linux Clang Debug",
+      "inherits": [ "linux-clang-base", "debug-base" ]
+    },
+    {
+      "name": "linux-clang-asan-ubsan",
+      "displayName": "Linux Clang ASan UBSan",
+      "inherits": [ "linux-clang-base", "debug-base", "sanitizers-base" ]
     }
   ],
   "buildPresets": [
@@ -174,6 +206,36 @@
       "name": "linux-relwithdebinfo-verbose",
       "inherits": "build-verbose",
       "configurePreset": "linux-relwithdebinfo"
+    },
+    {
+      "name": "linux-asan-ubsan",
+      "inherits": "build-base",
+      "configurePreset": "linux-asan-ubsan"
+    },
+    {
+      "name": "linux-clang-debug",
+      "inherits": "build-base",
+      "configurePreset": "linux-clang-debug"
+    },
+    {
+      "name": "linux-clang-asan-ubsan",
+      "inherits": "build-base",
+      "configurePreset": "linux-clang-asan-ubsan"
+    },
+    {
+      "name": "linux-asan-ubsan-verbose",
+      "inherits": "build-verbose",
+      "configurePreset": "linux-asan-ubsan"
+    },
+    {
+      "name": "linux-clang-debug-verbose",
+      "inherits": "build-verbose",
+      "configurePreset": "linux-clang-debug"
+    },
+    {
+      "name": "linux-clang-asan-ubsan-verbose",
+      "inherits": "build-verbose",
+      "configurePreset": "linux-clang-asan-ubsan"
     }
   ],
   "testPresets": [
@@ -295,6 +357,47 @@
       "name": "linux-release-fast",
       "inherits": "test-fast",
       "configurePreset": "linux-release"
+    },
+
+    {
+      "name": "linux-asan-ubsan",
+      "inherits": "test-quiet",
+      "configurePreset": "linux-asan-ubsan"
+    },
+    {
+      "name": "linux-clang-debug",
+      "inherits": "test-quiet",
+      "configurePreset": "linux-clang-debug"
+    },
+    {
+      "name": "linux-clang-asan-ubsan",
+      "inherits": "test-quiet",
+      "configurePreset": "linux-clang-asan-ubsan"
+    },
+    {
+      "name": "linux-asan-ubsan-verbose",
+      "inherits": "test-verbose",
+      "configurePreset": "linux-asan-ubsan"
+    },
+    {
+      "name": "linux-clang-debug-verbose",
+      "inherits": "test-verbose",
+      "configurePreset": "linux-clang-debug"
+    },
+    {
+      "name": "linux-clang-asan-ubsan-verbose",
+      "inherits": "test-verbose",
+      "configurePreset": "linux-clang-asan-ubsan"
+    },
+    {
+      "name": "linux-asan-ubsan-fast",
+      "inherits": "test-fast",
+      "configurePreset": "linux-asan-ubsan"
+    },
+    {
+      "name": "linux-clang-debug-fast",
+      "inherits": "test-fast",
+      "configurePreset": "linux-clang-debug"
     }
   ]
 }

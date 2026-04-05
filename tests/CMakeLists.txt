@@ -19,5 +19,11 @@ target_link_libraries(matching_tests
         GTest::gtest
 )
 
+if(ENABLE_WARNINGS)
+    target_set_warnings(matching_tests)
+endif()
+
+target_enable_sanitizers(matching_tests)
+
 include(GoogleTest)
 gtest_discover_tests(matching_tests)

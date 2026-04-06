@@ -1,3 +1,12 @@
+def runPreset(String preset) {
+    sh """
+        set -euxo pipefail
+        cmake --preset ${preset}
+        cmake --build --preset ${preset}
+        ctest --preset ${preset} --output-on-failure -j1 --output-junit out/build/${preset}/ctest-results.xml
+    """
+}
+
 pipeline {
     agent { label 'cpp' }
 
@@ -25,39 +34,40 @@ pipeline {
 
         stage('GCC Debug') {
             steps {
-                sh 'cmake --preset linux-debug'
-                sh 'cmake --build --preset linux-debug'
-                sh 'ctest --preset linux-debug --output-on-failure -j1'
+                script {
+                    runPreset('linux-debug')
+                }
             }
         }
 
         stage('GCC ASan UBSan') {
             steps {
-                sh 'cmake --preset linux-asan-ubsan'
-                sh 'cmake --build --preset linux-asan-ubsan'
-                sh 'ctest --preset linux-asan-ubsan --output-on-failure -j1'
+                script {
+                    runPreset('linux-asan-ubsan')
+                }
             }
         }
 
         stage('Clang Debug') {
             steps {
-                sh 'cmake --preset linux-clang-debug'
-                sh 'cmake --build --preset linux-clang-debug'
-                sh 'ctest --preset linux-clang-debug --output-on-failure -j1'
+                script {
+                    runPreset('linux-clang-debug')
+                }
             }
         }
 
         stage('Clang ASan UBSan') {
             steps {
-                sh 'cmake --preset linux-clang-asan-ubsan'
-                sh 'cmake --build --preset linux-clang-asan-ubsan'
-                sh 'ctest --preset linux-clang-asan-ubsan --output-on-failure -j1'
+                script {
+                    runPreset('linux-clang-asan-ubsan')
+                }
             }
         }
     }
 
     post {
         always {
+            junit allowEmptyResults: true, testResults: '**/ctest-results.xml'
             cleanWs()
         }
     }

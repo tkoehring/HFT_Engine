@@ -1,5 +1,5 @@
 add_executable(matching_tests
-    test_main.cpp
+    #test_main.cpp
     test_order.cpp
     test_order_book.cpp
     test_order_id.cpp
@@ -16,7 +16,7 @@ find_package(GTest CONFIG REQUIRED)
 target_link_libraries(matching_tests
     PRIVATE
         matching
-        GTest::gtest
+        GTest::gtest_main
 )
 
 if(ENABLE_WARNINGS)
@@ -26,4 +26,7 @@ endif()
 target_enable_sanitizers(matching_tests)
 
 include(GoogleTest)
-gtest_discover_tests(matching_tests)
+gtest_discover_tests(matching_tests
+    DISCOVERY_MODE PRE_TEST
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+)

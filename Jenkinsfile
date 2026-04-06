@@ -1,5 +1,6 @@
 def runPreset(String preset) {
     sh """
+        #!/usr/bin/env bash
         set -euxo pipefail
         cmake --preset ${preset}
         cmake --build --preset ${preset}

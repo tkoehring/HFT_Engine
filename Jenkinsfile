@@ -1,7 +1,6 @@
 def runPreset(String preset) {
     sh """
-        #!/usr/bin/env bash
-        set -euxo pipefail
+        set -eux
         cmake --preset ${preset}
         cmake --build --preset ${preset}
         ctest --preset ${preset} --output-on-failure -j1 --output-junit out/build/${preset}/ctest-results.xml

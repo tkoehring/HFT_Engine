@@ -1,14 +1,14 @@
-# tests/CMakeLists.txt
-
-file(GLOB TEST_SOURCES CONFIGURE_DEPENDS
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
-)
-
-add_executable(matching_tests ${TEST_SOURCES})
-
-target_sources(matching_tests PRIVATE
+add_executable(matching_tests
+    test_main.cpp
+    test_order.cpp
+    test_order_book.cpp
+    test_order_id.cpp
+    test_price.cpp
+    test_qty.cpp
+    test_side.cpp
     test_traits.cpp
     $<$<CONFIG:Debug>:test_order_debug.cpp>
+    $<$<CONFIG:Debug>:test_order_book_debug.cpp>
 )
 
 find_package(GTest CONFIG REQUIRED)

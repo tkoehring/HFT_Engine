@@ -74,8 +74,8 @@
       "inherits": "linux-base",
       "environment": {
         "VCPKG_ROOT": "/opt/vcpkg",
-        "CC": "clang",
-        "CXX": "clang++"
+        "CC": "clang-18",
+        "CXX": "clang++-18"
       }
     },
     {
@@ -371,8 +371,15 @@
     },
     {
       "name": "linux-clang-asan-ubsan",
-      "inherits": "test-quiet",
-      "configurePreset": "linux-clang-asan-ubsan"
+      "configurePreset": "linux-clang-asan-ubsan",
+      "output": {
+        "outputOnFailure": true
+      },
+      "environment": {
+        "ASAN_OPTIONS": "abort_on_error=1:symbolize=1",
+        "ASAN_SYMBOLIZER_PATH": "/usr/bin/llvm-symbolizer-18",
+        "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+      }
     },
     {
       "name": "linux-asan-ubsan-verbose",

@@ -24,6 +24,8 @@ function(target_enable_sanitizers target)
     target_compile_options(${target} PRIVATE
         -fsanitize=address,undefined
         -fno-omit-frame-pointer
+        -fno-optimize-sibling-calls
+        -fsanitize-address-use-after-scope
     )
     target_link_options(${target} PRIVATE
         -fsanitize=address,undefined

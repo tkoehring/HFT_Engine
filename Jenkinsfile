@@ -22,6 +22,15 @@ pipeline {
             }
         }
 
+        stage('Format Check') {
+            steps {
+                sh(script: """#!/usr/bin/env bash
+                set -eux
+                find src include tests \\( -name '*.cpp' -o -name '*.h' \\) -print0 | xargs -0 clang-format-18 --dry-run --Werror
+                """)
+            }
+        }
+
         stage('Tool Versions') {
             steps {
                 sh 'cmake --version'

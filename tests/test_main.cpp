@@ -1,5 +1,6 @@
-#include <gtest/gtest.h>
 #include <iostream>
+
+#include <gtest/gtest.h>
 
 class BannerListener : public ::testing::EmptyTestEventListener {
 public:

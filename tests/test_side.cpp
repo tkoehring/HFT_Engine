@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "test_common.h"
 
 namespace {
@@ -25,4 +26,4 @@ TEST(Side, FromCharInvalid) {
     EXPECT_FALSE(matching::from_char('X').has_value());
 }
 
-}
+} // namespace

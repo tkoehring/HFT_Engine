@@ -2,12 +2,13 @@
 
 #include <cassert>
 #include <compare>
+#include <type_traits>
+
 #include <matching/order_id.h>
 #include <matching/order_type.h>
 #include <matching/qty.h>
 #include <matching/side.h>
 #include <matching/types.h>
-#include <type_traits>
 
 namespace matching {
 

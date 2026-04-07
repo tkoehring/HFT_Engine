@@ -1,4 +1,5 @@
 #include <cassert>
+
 #include <matching/order_book.h>
 
 namespace matching {
@@ -11,7 +12,7 @@ OrderBook::Level& OrderBook::get_level(Side side, PriceT price) {
     return asks_[price];
 }
 
-void OrderBook::add_limit(const Order& o) {		
+void OrderBook::add_limit(const Order& o) {
     assert(o.quantity.units() > 0 && "add_limit requires quantity > 0");
     assert(order_map.find(o.id) == order_map.end() && "duplicate OrderId in add_limit");
 

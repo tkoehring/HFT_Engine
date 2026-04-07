@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "test_common.h"
 
 namespace {
@@ -35,4 +36,4 @@ TEST(Qty, OrderingWorks) {
     EXPECT_EQ(a, a);
 }
 
-}
+} // namespace

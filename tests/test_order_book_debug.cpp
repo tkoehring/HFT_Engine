@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "test_common.h"
 
 namespace {
@@ -21,4 +22,4 @@ TEST(OrderBookDeathTest, DuplicateOrderIdTriggersAssert) {
     EXPECT_DEATH(book.add_limit(o2), "duplicate OrderId in add_limit");
 }
 
-}
+} // namespace

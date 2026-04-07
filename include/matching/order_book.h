@@ -18,7 +18,7 @@ private:
         Qty qty_remaining_;
     };
 
-    using Level = std::deque<OrderNode>; 
+    using Level = std::deque<OrderNode>;
 
     std::map<PriceT, Level> asks_;
     std::map<PriceT, Level, std::greater<>> bids_;

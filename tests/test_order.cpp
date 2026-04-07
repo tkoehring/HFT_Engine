@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "test_common.h"
 
 namespace {
@@ -25,10 +26,10 @@ TEST(Order, ConstructsAndReadsState) {
 
 TEST(Order, ReduceDecreasesQuantity) {
     const Order order0{OrderId::from_uint64(1),
-                                    OrderType::Limit,
-                                    Price4::from_ticks(10000),
-                                    Qty::from_units(10),
-                                    Side::Sell};
+                       OrderType::Limit,
+                       Price4::from_ticks(10000),
+                       Qty::from_units(10),
+                       Side::Sell};
 
     Order order1 = order0;
     EXPECT_EQ(order1.quantity.units(), 10u);
@@ -40,10 +41,10 @@ TEST(Order, ReduceDecreasesQuantity) {
 
 TEST(Order, ReduceToZeroMarksFilled) {
     Order o{OrderId::from_uint64(1),
-                        OrderType::Limit,
-                        Price4::from_ticks(10000),
-                        Qty::from_units(5),
-                        Side::Sell};
+            OrderType::Limit,
+            Price4::from_ticks(10000),
+            Qty::from_units(5),
+            Side::Sell};
 
     EXPECT_EQ(o.quantity.units(), 5u);
     EXPECT_FALSE(o.is_filled());
@@ -54,18 +55,18 @@ TEST(Order, ReduceToZeroMarksFilled) {
 
 TEST(Order, ComparisonDefaulted) {
     const Order a{OrderId::from_uint64(1),
-                            OrderType::Limit,
-                            Price4::from_ticks(10000),
-                            Qty::from_units(5),
-                            Side::Buy};
+                  OrderType::Limit,
+                  Price4::from_ticks(10000),
+                  Qty::from_units(5),
+                  Side::Buy};
 
     const Order a2 = a;
 
     const Order b{OrderId::from_uint64(2),
-                            OrderType::Limit,
-                            Price4::from_ticks(10000),
-                            Qty::from_units(5),
-                            Side::Buy};
+                  OrderType::Limit,
+                  Price4::from_ticks(10000),
+                  Qty::from_units(5),
+                  Side::Buy};
 
     EXPECT_TRUE(a == a2);
     EXPECT_FALSE(a != a2);
@@ -74,4 +75,4 @@ TEST(Order, ComparisonDefaulted) {
     EXPECT_TRUE(b > a);
 }
 
-}
+} // namespace

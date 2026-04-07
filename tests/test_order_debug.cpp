@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "test_common.h"
 
 namespace {
@@ -17,4 +18,4 @@ TEST(OrderDeathTest, ReduceCannotOverfill) {
     EXPECT_DEATH(o.reduce(matching::Qty::from_units(6)), ".*");
 }
 
-}
+} // namespace

@@ -1,6 +1,8 @@
-#include <gtest/gtest.h>
 #include <cstdint>
 #include <string>
+
+#include <gtest/gtest.h>
+
 #include "test_common.h"
 
 namespace {
@@ -19,7 +21,7 @@ class PriceParseInvalid : public ::testing::TestWithParam<InvalidParseData> {};
 TEST_P(PriceParseInvalid, Invalid) {
     const auto& tc = GetParam();
     EXPECT_FALSE(Price4::parse(tc.input).has_value()) << "ERROR: Expected no value. "
-                                                    << "Input: " << tc.input;
+                                                      << "Input: " << tc.input;
 }
 
 static std::string InvalidParseTestName(const ::testing::TestParamInfo<InvalidParseData>& info) {
@@ -27,14 +29,14 @@ static std::string InvalidParseTestName(const ::testing::TestParamInfo<InvalidPa
 }
 
 INSTANTIATE_TEST_SUITE_P(PriceParse,
-                            PriceParseInvalid,
-                            ::testing::Values(InvalidParseData{"LeadingDot", ".1"},
-                                            InvalidParseData{"TrailingDot", "1."},
-                                            InvalidParseData{"MultipleDots", "1..2"},
-                                            InvalidParseData{"TooManyDecimals", "1.23456"},
-                                            InvalidParseData{"NonDigit", "12a"},
-                                            InvalidParseData{"Empty", ""}),
-                            InvalidParseTestName);
+                         PriceParseInvalid,
+                         ::testing::Values(InvalidParseData{"LeadingDot", ".1"},
+                                           InvalidParseData{"TrailingDot", "1."},
+                                           InvalidParseData{"MultipleDots", "1..2"},
+                                           InvalidParseData{"TooManyDecimals", "1.23456"},
+                                           InvalidParseData{"NonDigit", "12a"},
+                                           InvalidParseData{"Empty", ""}),
+                         InvalidParseTestName);
 
 struct ValidParseData {
     const char* name;
@@ -52,7 +54,7 @@ TEST_P(PriceParseValid, Valid) {
 
     // Assert true before accessing p->ticks() to avoid dereferencing nullopt
     ASSERT_TRUE(p.has_value()) << "ERROR: Expected value. "
-                                << "Input: " << tc.input;
+                               << "Input: " << tc.input;
     EXPECT_EQ(p->ticks(), tc.expectedTicks)
         << "ERROR: Expected matching ticks. "
         << "Parsed Ticks: " << p->ticks() << " Expected Ticks: " << tc.expectedTicks;
@@ -63,10 +65,10 @@ static std::string ValidParseTestName(const ::testing::TestParamInfo<ValidParseD
 }
 
 INSTANTIATE_TEST_SUITE_P(PriceParse,
-                            PriceParseValid,
-                            ::testing::Values(ValidParseData{"ParsesInteger", "123", 1230000},
-                                            ValidParseData{"ParsesFractional", "123.4", 1234000},
-                                            ValidParseData{"PadsFractionalDigits", "1.23", 12300}),
-                            ValidParseTestName);
+                         PriceParseValid,
+                         ::testing::Values(ValidParseData{"ParsesInteger", "123", 1230000},
+                                           ValidParseData{"ParsesFractional", "123.4", 1234000},
+                                           ValidParseData{"PadsFractionalDigits", "1.23", 12300}),
+                         ValidParseTestName);
 
-}
+} // namespace

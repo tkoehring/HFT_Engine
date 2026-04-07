@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "test_common.h"
 
 namespace {
@@ -20,4 +21,4 @@ TEST(OrderId, Comparison) {
     EXPECT_TRUE(a < b);
 }
 
-}
+} // namespace

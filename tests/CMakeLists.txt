@@ -7,6 +7,7 @@ add_executable(matching_tests
     test_qty.cpp
     test_side.cpp
     test_traits.cpp
+    temp.cpp
     $<$<CONFIG:Debug>:test_order_debug.cpp>
     $<$<CONFIG:Debug>:test_order_book_debug.cpp>
 )

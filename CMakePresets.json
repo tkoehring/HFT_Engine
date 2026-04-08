@@ -131,6 +131,14 @@
       "name": "linux-clang-asan-ubsan",
       "displayName": "Linux Clang ASan UBSan",
       "inherits": [ "linux-clang-base", "debug-base", "sanitizers-base" ]
+    },
+    {
+      "name": "linux-clang-tidy",
+      "displayName": "Linux Clang Tidy",
+      "inherits": [ "linux-clang-base", "debug-base" ],
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
     }
   ],
   "buildPresets": [
@@ -236,6 +244,11 @@
       "name": "linux-clang-asan-ubsan-verbose",
       "inherits": "build-verbose",
       "configurePreset": "linux-clang-asan-ubsan"
+    },
+    {
+      "name": "linux-clang-tidy",
+      "inherits": "build-base",
+      "configurePreset": "linux-clang-tidy"
     }
   ],
   "testPresets": [

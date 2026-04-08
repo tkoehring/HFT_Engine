@@ -1,11 +1,14 @@
 Checks: >
+  clang-diagnostic-*,
   bugprone-*,
-  performance-*,
-  modernize-*,
-  readability-*,
-  -readability-identifier-naming,
-  -modernize-use-trailing-return-type
+  modernize-use-nodiscard,
+  readability-braces-around-statements,
+  -bugprone-unchecked-optional-access
 
-HeaderFilterRegex: '^(.*[\\/])?(include|src|tests)[\\/]'
-SystemHeaders: false
-FormatStyle: none
+WarningsAsErrors: >
+  clang-diagnostic-reorder-ctor,
+  modernize-use-nodiscard,
+  readability-braces-around-statements
+
+HeaderFilterRegex: '^(.*\/)?(include|src)\/.*'
+FormatStyle: file

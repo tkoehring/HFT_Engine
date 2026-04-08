@@ -41,6 +41,28 @@ pipeline {
             }
         }
 
+        stage('Clang-Tidy') {
+            steps {
+                sh(script: """#!/usr/bin/env bash
+                set -eux
+                cmake --preset linux-clang-tidy
+                run-clang-tidy-18 -p out/build/linux-clang-tidy \\
+                  -header-filter='^(.*\\\\/)?(include|src)\\\\/.*' \\
+                  src/*.cpp > out/build/linux-clang-tidy/clang-tidy.txt 2>&1 || true
+                """)
+
+                recordIssues(
+                    enabledForFailure: true,
+                    tools: [clangTidy(pattern: 'out/build/linux-clang-tidy/clang-tidy.txt')],
+                    qualityGates: [
+                        [threshold: 1, type: 'TOTAL', unstable: true]
+                    ]
+                )
+
+                archiveArtifacts artifacts: 'out/build/linux-clang-tidy/clang-tidy.txt', allowEmptyArchive: true
+            }
+        }
+
         stage('GCC Debug') {
             steps {
                 script {
